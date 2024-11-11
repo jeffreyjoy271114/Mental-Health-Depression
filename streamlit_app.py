@@ -76,11 +76,6 @@ with st.expander('**Data Visualization**'):
   sns.countplot(x='Sleep Duration', data = df, ax = ax)
   st.pyplot(fig)
 
-  st.subheader("Count Plot for Dietary Habits")
-  fig, ax = plt.subplots()
-  sns.countplot(x='Dietary Habits', ax = ax)
-  st.pyplot(fig)
-
   st.subheader("Count Plot for Financial Stress")
   fig, ax = plt.subplots()
   sns.countplot(x='Financial Stress', data = df, ax = ax)
