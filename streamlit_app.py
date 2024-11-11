@@ -45,3 +45,13 @@ with st.expander('**Data Visualization**'):
   fig, ax = plt.subplots()
   sns.countplot(x='Gender', data = df, ax = ax)
   st.pyplot(fig) 
+
+  st.subheader("Count Plot for Working Professional or Students")
+  fig, ax = plt.subplots()
+  sns.countplot(x='Working Professional or Student', data = df, ax = ax)
+  st.pyplot(fig)
+
+  st.subheader("Count Plot for Academic Pressure")
+  fig, ax = plt.subplots()
+  sns.countplot(x='Academic Pressure', data = df, ax = ax)
+  st.pyplot(fig)
