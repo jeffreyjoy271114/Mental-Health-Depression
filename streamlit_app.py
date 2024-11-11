@@ -53,5 +53,46 @@ with st.expander('**Data Visualization**'):
 
   st.subheader("Count Plot for Academic Pressure")
   fig, ax = plt.subplots()
-  sns.countplot(x='Academic Pressure', data = df, ax = ax, pallete = 'viridis')
+  sns.countplot(x='Academic Pressure', data = df, ax = ax)
   st.pyplot(fig)
+  
+  st.subheader("Count Plot for Work Pressure")
+  fig, ax = plt.subplots()
+  sns.countplot(x='Work Pressure', data = df, ax = ax)
+  st.pyplot(fig)
+
+  st.subheader("Count Plot for Study Satisfaction")
+  fig, ax = plt.subplots()
+  sns.countplot(x='Study Satisfaction', data = df, ax = ax)
+  st.pyplot(fig)
+
+  st.subheader("Count Plot for Job Satisfaction")
+  fig, ax = plt.subplots()
+  sns.countplot(x='Job Satisfaction', data = df, ax = ax)
+  st.pyplot(fig)
+
+  st.subheader("Count Plot for Sleep Duration")
+  fig, ax = plt.subplots()
+  sns.countplot(x='Sleep Duration', data = df, ax = ax)
+  st.pyplot(fig)
+
+  st.subheader("Count Plot for Dietary Habits")
+  fig, ax = plt.subplots()
+  sns.countplot(x='Dietary Habits, ax = ax)
+  st.pyplot(fig)
+
+  st.subheader("Count Plot for Financial Stress")
+  fig, ax = plt.subplots()
+  sns.countplot(x='Financial Stress', data = df, ax = ax)
+  st.pyplot(fig)
+
+  st.subheader("Count Plot for Depression")
+  fig, ax = plt.subplots()
+  sns.countplot(x='Depression', data = df, ax = ax)
+  st.pyplot(fig)  
+
+
+                
+
+            
+
