@@ -1,5 +1,8 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
 # Title for the app
 st.title("Mental Health and Depression Analysis")
 
@@ -22,7 +25,7 @@ Participants were asked to provide inputs without requiring any professional men
 
 The dataset provides insights into how everyday factors might correlate with mental health risks, making it a useful resource for machine learning models aimed at mental health prediction. It is particularly valuable for identifying key contributors to mental health challenges in a non-clinical setting.
 """)
-with st.expander('Data'):
+with st.expander('**Data**'):
   st.write('**Raw Data**')
   df = pd.read_csv('https://raw.githubusercontent.com/jeffreyjoy271114/Kaggle-PlayGround-Series-S04E11-Mental-health-Depression-Prediction/refs/heads/main/Mental_health_clean_data.csv')
   df
@@ -35,3 +38,9 @@ with st.expander('Data'):
   y = df.Depression
   y
 
+with st.expander('**Data Visualization**'):
+  # Display a count plot for the 'Depression' column
+  st.subheader("Count Plot of Gender")
+  fig, ax = plt.subplots()
+  sns.countplot(x='Gender', data = df, ax = ax)
+  st.pyplot(fig) 
