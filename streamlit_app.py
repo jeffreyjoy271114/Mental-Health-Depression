@@ -27,3 +27,11 @@ with st.expander('Data'):
   df = pd.read_csv('https://raw.githubusercontent.com/jeffreyjoy271114/Kaggle-PlayGround-Series-S04E11-Mental-health-Depression-Prediction/refs/heads/main/Mental_health_clean_data.csv')
   df
 
+  st.write('**X**')
+  X = df.drop('Depression', axis = 1, inplace = True)
+  X
+  
+  st.write('**y**')
+  y = df.Depression
+  y
+
