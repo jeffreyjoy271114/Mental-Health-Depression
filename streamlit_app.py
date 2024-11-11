@@ -1,7 +1,7 @@
 import streamlit as st
-
+import pandas 
 # Title for the app
-st.title("Mental Health and Depression Risk Analysis")
+st.title("Mental Health and Depression Analysis")
 
 # Information about the dataset
 st.info("""
@@ -23,5 +23,4 @@ Participants were asked to provide inputs without requiring any professional men
 The dataset provides insights into how everyday factors might correlate with mental health risks, making it a useful resource for machine learning models aimed at mental health prediction. It is particularly valuable for identifying key contributors to mental health challenges in a non-clinical setting.
 """)
 
-# Additional Streamlit code for further analysis or visualization can go here.
-# For example, displaying data, creating charts, or adding user inputs.
+
