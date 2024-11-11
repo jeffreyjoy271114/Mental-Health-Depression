@@ -28,7 +28,7 @@ with st.expander('Data'):
   df
 
   st.write('**X**')
-  X = df.drop('Depression', axis = 1, inplace = True)
+  X = df.drop('Depression', axis = 1)
   X
   
   st.write('**y**')
