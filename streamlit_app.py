@@ -53,5 +53,5 @@ with st.expander('**Data Visualization**'):
 
   st.subheader("Count Plot for Academic Pressure")
   fig, ax = plt.subplots()
-  sns.countplot(x='Academic Pressure', data = df, ax = ax)
+  sns.countplot(x='Academic Pressure', data = df, ax = ax, pallete = 'viridis')
   st.pyplot(fig)
