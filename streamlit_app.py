@@ -78,7 +78,7 @@ with st.expander('**Data Visualization**'):
 
   st.subheader("Count Plot for Dietary Habits")
   fig, ax = plt.subplots()
-  sns.countplot(x='Dietary Habits, ax = ax)
+  sns.countplot(x='Dietary Habits', ax = ax)
   st.pyplot(fig)
 
   st.subheader("Count Plot for Financial Stress")
