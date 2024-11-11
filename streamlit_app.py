@@ -87,7 +87,11 @@ with st.expander('**Data Visualization**'):
   st.pyplot(fig)  
 
 
-                
+# Data Preparations
+with st.sidebar:
+  st.header('Input Features')
+  Gender = st.selectbox('Gender', ('Male', 'Female'))
 
-            
+
+
 
