@@ -105,5 +105,5 @@ with st.sidebar:
   Work_Study_Hours = st.selectbox('Work/Study Hours', (0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0))
   Financial_Stress = st.selectbox('Financial Stress', (1.0, 2.0, 3.0, 4.0, 5.0))
   Family_History_of_Mental_Illness = st.selectbox('Family History of Mental Illness', ('Yes', 'No'))
-  
+  Age = st.slider('Age', min_value = 18, max_value = 60, step=1)
 
