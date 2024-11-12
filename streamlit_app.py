@@ -102,7 +102,7 @@ with st.sidebar:
   Dietary_Habits = st.selectbox('Dietary Habits', ('Moderate', 'Unhealthy', 'Healthy'))	
   Degree = st.selectbox('Degree', ('Class 12', 'B.Ed', 'B.Arch', 'B.Com', 'B.Pharm', 'BCA' ,'M.Ed', 'MCA', 'BBA', 'BSc', 'MSc', 'LLM', 'M.Pharm', 'M.Tech', 'B.Tech', 'LLB', 'BHM', 'MBA', 'BA', 'ME', 'MD', 'MHM', 'PhD', 'BE', 'M.Com', 'MBBS', 'MA', 'Others'))
   Have_you_ever_had_suicidal_thoughts = st.selectbox('Have you ever had suicidal thoughts ?', ('Yes', 'No'))	
-  Work/Study_Hours = st.selectbox('Work/Study Hours', (0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0))
+  Work_Study_Hours = st.selectbox('Work/Study Hours', (0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0))
   Financial_Stress = st.selectbox('Financial Stress', (1.0, 2.0, 3.0, 4.0, 5.0))
   Family_History_of_Mental_Illness = st.selectbox('Family History of Mental Illness', ('Yes', 'No'))
   
