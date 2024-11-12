@@ -92,7 +92,7 @@ with st.sidebar:
   st.header('Input Features')
   Gender = st.selectbox('Gender', ('Male', 'Female'))
   City = st.selectbox('City', ('Kalyan', 'Patna', 'Vasai-Virar', 'Kolkata', 'Ahmedabad', 'Meerut', 'Ludhiana', 'Pune', 'Rajkot', 'Visakhapatnam', 'Srinagar', 'Mumbai', 'Indore', 'Agra', 'Surat', 'Varanasi', 'Vadodara', 'Hyderabad', 'Kanpur', 'Jaipur', 'Thane', 'Lucknow', 'Nagpur', 'Bangalore', 'Chennai', 'Ghaziabad', 'Delhi', 'Bhopal', 'Faridabad', 'Nashik'))
-  Working Professional_or_Student = st.selectbox('Working Professional or Student', ('Working Professional', 'Student'))
+  Working_Professional_or_Student = st.selectbox('Working Professional or Student', ('Working Professional', 'Student'))
   Profession = st.selectbox('Profession', ('Student', 'Teacher', 'Professional Workers', 'Content Writer', 'Architect', 'Consultant', 'HR Manager', 'Pharmacist', 'Doctor', 'Business Analyst', 'Chemist', 'Entrepreneur', 'Chef', 'Educational Consultant', 'Data Scientist', 'Researcher', 'Lawyer', 'Customer Support', 'Marketing Manager', 'Pilot', 'Travel Consultant', 'Plumber', 'Sales Executive', 'Manager', 'Judge', 'Electrician', 'Financial Analyst', 'Software Engineer', 'Civil Engineer', 'UX/UI Designer', 'Digital Marketer' ,'Accountant', 'Finanancial Analyst', 'Mechanical Engineer', 'Graphic Designer', 'Research Analyst', 'Investment Banker'))
   Academic Pressure	= st.selectbox('Academic Pressure', (0.0, 0.1))
 
