@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-frpm sklearn.ensemble import RandonForestClassifier
+from sklearn.ensemble import RandonForestClassifier
 
 # Title for the app
 st.title("Mental Health and Depression Analysis")
