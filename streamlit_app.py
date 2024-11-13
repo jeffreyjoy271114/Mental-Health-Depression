@@ -180,14 +180,14 @@ st.dataframe(df_prediction_proba,
              column_config={
                'No Depression': st.column_config.ProgressColumn(
                  'No Depression',
-                 format='%f',
+                 format='%.2f',
                  width='medium',
                  min_value=0,
                  max_value=1
                ),
                'Depression': st.column_config.ProgressColumn(
                  'Depression',
-                 format='%f',
+                 format='%.2f',
                  width='medium',
                  min_value=0,
                  max_value=1
