@@ -175,7 +175,7 @@ df_prediction_proba.rename(columns = {0 : 'No Depression',
                                       1 : 'Depression'})
 
 # Display the predicted Species
-st.subheader('Predicted Species')
+st.subheader('Predicted Results')
 st.dataframe(df_prediction_proba,
              column_config={
                'No Depression': st.column_config.ProgressColumn(
@@ -195,5 +195,5 @@ st.dataframe(df_prediction_proba,
              }, hide_index = True)
 
 
-mental_biforcate = np.array(['No Depression', 'Depression'])
+mental_biforcate = np.array(['You are NOT a victim of Depression', 'You are a victim of Depression'])
 st.success(str(mental_biforcate[prediction][0]))
