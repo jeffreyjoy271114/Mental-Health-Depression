@@ -131,8 +131,29 @@ data = {'Gender' : Gender,
 input_df = pd.DataFrame(data, index = [0])
 input_mental = pd.concat([input_df, X_raw], axis = 0)
 
-with st.expander('Input Features'):
+with st.expander('**Input Features**'):
   st.write('**Entered Mental Health Data**')
   input_df
-  st.write('**Combined Data***')
+  st.write('**Combined Data**')
   input_mental
+
+# Data Preparation
+# Encode X
+encode = ['Gender', 'City', 'Working Professional or Student', 
+          'Profession', 'Sleep Duration', 'Dietary Habits', 
+          'Degree', 'Have you ever had suicidal thoughts ?',
+          'Family History of Mental Illness']
+df_mental = pd.get_dummies(input_mental, prefix = encode)
+
+X = df_mental[1:]
+input_row = dfmental[:1]
+
+# # Encode y
+# target_mapper = {1 : 1,
+#                  0 : 0}
+
+with st.expander('**Data Preparation**'):
+  st.write('**Encoded X**')
+  input_row
+  st.write('**Encoded y**')
+  y
