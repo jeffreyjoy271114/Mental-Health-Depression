@@ -174,4 +174,26 @@ df_prediction_proba.columns = ['No Depression', 'Depression']
 df_prediction_proba.rename(columns = {0 : 'No Depression', 
                                       1 : 'Depression'})
 
-df_prediction_proba
+# Display the predicted Species
+st.subheader('Predicted Species')
+st.dataframe(df_prediction_proba,
+             column_config={
+               'No Depression': st.column_config.ProgressColumn(
+                 'No Depression',
+                 format='%f',
+                 width='medium',
+                 min_value=0,
+                 max_value=1
+               ),
+               'Depression': st.column_config.ProgressColumn(
+                 'Depression',
+                 format='%f',
+                 width='medium',
+                 min_value=0,
+                 max_value=1
+               ),
+             }, hide_index = True)
+
+
+mental_biforcate = np.array(['No Depression', 'Depression'])
+st.success(str(mental_biforcate[prediction][0]))
