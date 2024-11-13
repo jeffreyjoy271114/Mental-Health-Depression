@@ -146,7 +146,7 @@ encode = ['Gender', 'City', 'Working Professional or Student',
 df_mental = pd.get_dummies(input_mental, prefix = encode)
 
 X = df_mental[1:]
-input_row = dfmental[:1]
+input_row = df_mental[:1]
 
 # # Encode y
 # target_mapper = {1 : 1,
