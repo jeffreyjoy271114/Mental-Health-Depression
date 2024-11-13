@@ -1,9 +1,6 @@
-streamlit
-numpy 
 pandas
-scikit-learn
-imblearn
+numpy
 seaborn
 matplotlib
-xgboost
-tensorflow
+scikit-learn
+streamlit
