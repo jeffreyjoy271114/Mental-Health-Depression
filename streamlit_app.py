@@ -124,7 +124,7 @@ data = {'Gender' : Gender,
         'Sleep Duration' : Sleep_Duration,
         'Dietary Habits' : Dietary_Habits, 
         'Degree' : Degree,
-        'Have you ever had suicidal thoughts ?' : Have you ever had suicidal thoughts ?,
+        'Have you ever had suicidal thoughts ?' : Have you ever had suicidal thoughts,
         'Work/Study Hours' : Work_Study_Hours,
         'Financial Stress' : Financial_Stress,
         'Family History of Mental Illness' : Family_History_of_Mental_Illness}
