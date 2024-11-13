@@ -129,4 +129,10 @@ data = {'Gender' : Gender,
         'Financial Stress' : Financial_Stress,
         'Family History of Mental Illness' : Family_History_of_Mental_Illness}
 input_df = pd.DataFrame(data, index = [0])
-input_df
+input_mental = pd.concat([input_df, X_raw], axis = 0)
+
+with st.expander('Input Features'):
+  st.write('**Entered Mental Health Data**')
+  input_df
+  st.write('**Combined Data***')
+  input_mental
