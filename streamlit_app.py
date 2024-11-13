@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+frpm sklearn.ensemble import RandonForestClassifier
 
 # Title for the app
 st.title("Mental Health and Depression Analysis")
@@ -32,12 +33,12 @@ with st.expander('**Data**'):
   df
 
   st.write('**X**')
-  X = df.drop('Depression', axis = 1)
-  X
+  X_raw = df.drop('Depression', axis = 1)
+  X_raw
   
   st.write('**y**')
-  y = df.Depression
-  y
+  y_raw = df.Depression
+  y_raw
 
 with st.expander('**Data Visualization**'):
   # Display a count plot for the 'Depression' column
@@ -87,15 +88,17 @@ with st.expander('**Data Visualization**'):
   st.pyplot(fig)  
 
 
-# Data Preparations
+# Input features
 with st.sidebar:
   st.header('Input Features')
   Gender = st.selectbox('Gender', ('Male', 'Female'))
+  Age = st.slider('Age', min_value = 18, max_value = 60, step=1)
   City = st.selectbox('City', ('Kalyan', 'Patna', 'Vasai-Virar', 'Kolkata', 'Ahmedabad', 'Meerut', 'Ludhiana', 'Pune', 'Rajkot', 'Visakhapatnam', 'Srinagar', 'Mumbai', 'Indore', 'Agra', 'Surat', 'Varanasi', 'Vadodara', 'Hyderabad', 'Kanpur', 'Jaipur', 'Thane', 'Lucknow', 'Nagpur', 'Bangalore', 'Chennai', 'Ghaziabad', 'Delhi', 'Bhopal', 'Faridabad', 'Nashik'))
   Working_Professional_or_Student = st.selectbox('Working Professional or Student', ('Working Professional', 'Student'))
   Profession = st.selectbox('Profession', ('Student', 'Teacher', 'Professional Workers', 'Content Writer', 'Architect', 'Consultant', 'HR Manager', 'Pharmacist', 'Doctor', 'Business Analyst', 'Chemist', 'Entrepreneur', 'Chef', 'Educational Consultant', 'Data Scientist', 'Researcher', 'Lawyer', 'Customer Support', 'Marketing Manager', 'Pilot', 'Travel Consultant', 'Plumber', 'Sales Executive', 'Manager', 'Judge', 'Electrician', 'Financial Analyst', 'Software Engineer', 'Civil Engineer', 'UX/UI Designer', 'Digital Marketer' ,'Accountant', 'Finanancial Analyst', 'Mechanical Engineer', 'Graphic Designer', 'Research Analyst', 'Investment Banker'))
   Academic_Pressure	= st.selectbox('Academic Pressure (0.0 if Working Professional)', (0.0, 1.0, 2.0, 3.0, 4.0, 5.0))
   Work_Pressure = st.selectbox('Work Pressure	(0.0 if Student)', (0.0, 1.0, 2.0, 3.0, 4.0, 5.0))
+  CGPA = st.slider('CGPA (0.0 if Working Professional)', 0.0, 10.0)
   Study_Satisfaction = st.selectbox('Study Satisfaction (0.0 if Working Professional)', (0.0, 1.0, 2.0, 3.0, 4.0, 5.0))
   Job_Satisfaction = st.selectbox('Job Satisfaction (0.0 if Student)', (0.0, 1.0, 2.0, 3.0, 4.0, 5.0))
   Sleep_Duration = st.selectbox('Sleep Duration', ('Less than 5 hours', '5-6 hours', '6-7 hours', '7-8 hours', 'More than 8 hours'))
@@ -105,5 +108,25 @@ with st.sidebar:
   Work_Study_Hours = st.selectbox('Work/Study Hours', (0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0))
   Financial_Stress = st.selectbox('Financial Stress', (1.0, 2.0, 3.0, 4.0, 5.0))
   Family_History_of_Mental_Illness = st.selectbox('Family History of Mental Illness', ('Yes', 'No'))
-  Age = st.slider('Age', min_value = 18, max_value = 60, step=1)
-  CGPA = st.slider('CGPA (0.0 if Working Professional)', 0.0, 10.0)
+  
+
+# Craete a DataFrame For the input Features
+data = {'Gender' : Gender,
+        'Age' : Age,
+        'City' : City,
+        'Working Professional or Student' :  Working_Professional_or_Student,
+        'Profession' : Profession,
+        'Academic Pressure' : Academic_Pressure, 
+        'Work Pressure' : Work_Pressure,
+        'CGPA' : CGPA,
+        'Study Satisfaction' : Study_Satisfaction,
+        'Job Satisfaction' : Job_Satisfaction, 
+        'Sleep Duration' : Sleep_Duration,
+        'Dietary Habits' : Dietary_Habits, 
+        'Degree' : Degree,
+        'Have you ever had suicidal thoughts ?' : Have you ever had suicidal thoughts ?,
+        'Work/Study Hours' : Work_Study_Hours,
+        'Financial Stress' : Financial_Stress,
+        'Family History of Mental Illness' : Family_History_of_Mental_Illness}
+input_df = pd.DataFrame(data, index = [0])
+input_df
