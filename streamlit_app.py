@@ -156,4 +156,4 @@ with st.expander('**Data Preparation**'):
   st.write('**Encoded X**')
   input_row
   st.write('**Encoded y**')
-  y
+  y_raw
