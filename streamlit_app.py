@@ -157,3 +157,17 @@ with st.expander('**Data Preparation**'):
   input_row
   st.write('**Encoded y**')
   y
+
+# Model Training and inference
+## Train the model
+
+clf = RandomForestClassifier(criterion = 'entropy', n_estimators = 150)
+clf.fit(X, y)
+
+
+## Apply model to make the predictions
+prediction = clf.predict(input_row)
+prediction_proba = clf.predict_proba(input_row)
+
+df_prediction_proba = pd.DataFrame(prediction_proba)
+df_prediction_proba
