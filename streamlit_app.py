@@ -38,7 +38,7 @@ with st.expander('**Data**'):
   
   st.write('**y**')
   y_raw = df.Depression
-  y_raw
+  y = y_raw
 
 with st.expander('**Data Visualization**'):
   # Display a count plot for the 'Depression' column
@@ -156,4 +156,4 @@ with st.expander('**Data Preparation**'):
   st.write('**Encoded X**')
   input_row
   st.write('**Encoded y**')
-  y_raw
+  y
