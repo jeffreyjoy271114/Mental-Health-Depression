@@ -26,12 +26,12 @@ st.success("Model loaded successfully from Hugging Face!")
 label_encoders = {}
 
 # Information about the dataset
-st.info("""
+st.info(""" 
 This dataset was collected as part of a comprehensive survey aimed at understanding the factors contributing to depression risk among adults. 
 It was collected during an anonymous survey conducted between January and June 2023 across various cities, targeting individuals from diverse backgrounds and professions.
 """)
 
-# Define the LabelEncoder for each categorical feature (replace with actual encoders if you saved them during training)
+# Define the LabelEncoder for each categorical feature
 categorical_columns = ['Gender', 'City', 'Working Professional or Student', 
                        'Profession', 'Sleep Duration', 'Dietary Habits', 
                        'Degree', 'Have you ever had suicidal thoughts ?',
@@ -91,8 +91,7 @@ prediction_proba = clf.predict_proba(input_df_encoded)
 # Display the predicted probabilities
 df_prediction_proba = pd.DataFrame(prediction_proba)
 df_prediction_proba.columns = ['No Depression', 'Depression']
-df_prediction_proba.rename(columns = {0 : 'No Depression', 
-                                      1 : 'Depression'})
+df_prediction_proba.rename(columns={0: 'No Depression', 1: 'Depression'})
 
 # Display the predicted Results
 st.subheader('Predicted Results')
