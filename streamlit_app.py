@@ -71,8 +71,8 @@ st.info("Encoding Features Using LabelEncoder...")
 # Columns to encode
 encode_columns = ['Gender', 'City', 'Working Professional or Student', 'Sleep Duration', 'Dietary Habits', 'Degree', 'Have you ever had suicidal thoughts?']
 
-# Load the encoders (assuming these were saved during model training)
-encoders_url = "https://huggingface.co/jeffrey-joy/mental_health_Data/resolve/main/model.pkl"  # Replace with your actual URL
+# Load the encoders
+encoders_url = "https://huggingface.co/username/mental-health-model/resolve/main/encoders.pkl"  # Replace with actual URL
 response = requests.get(encoders_url)
 
 if response.status_code == 200:
@@ -83,11 +83,16 @@ if response.status_code == 200:
 else:
     st.error("Failed to load encoders. Please check the URL and try again.")
 
+# Ensure `encoders` is a dictionary
+if not isinstance(encoders, dict):
+    st.error("Loaded encoders are not in the correct format. Please check the file.")
+
 # Apply encoders to input data
 for col in encode_columns:
-    encoder = encoders.get(col)
-    if encoder:
-        input_df[col] = encoder.transform(input_df[col])
+    if col in encoders:  # Check if the encoder exists for the column
+        input_df[col] = encoders[col].transform(input_df[col])
+    else:
+        st.error(f"Encoder for column '{col}' not found.")
 
 # Ensure input matches model's training format
 input_encoded = input_df.reindex(columns=X_raw.columns, fill_value=0)
