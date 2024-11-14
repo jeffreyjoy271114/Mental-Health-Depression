@@ -152,7 +152,7 @@ X = pd.get_dummies(X_raw, columns=encode)
 input_mental = pd.get_dummies(input_mental, columns=encode)
 
 # Align the columns of input_row to match X
-input_mental = input_row.reindex(columns=X.columns, fill_value=0)
+input_mental = input_mental.reindex(columns=X.columns, fill_value=0)
 
 
 # # Encode y
