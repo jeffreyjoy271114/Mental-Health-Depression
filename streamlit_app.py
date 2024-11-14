@@ -149,10 +149,10 @@ encode = ['Gender', 'City', 'Working Professional or Student',
 # df_mental = pd.get_dummies(input_mental, prefix = encode)
 
 X = pd.get_dummies(X_raw, columns=encode)
-input_row = pd.get_dummies(input_row, columns=encode)
+input_mental = pd.get_dummies(input_row, columns=encode)
 
 # Align the columns of input_row to match X
-input_row = input_row.reindex(columns=X.columns, fill_value=0)
+input_mental = input_row.reindex(columns=X.columns, fill_value=0)
 
 
 # # Encode y
@@ -169,7 +169,6 @@ with st.expander('**Data Preparation**'):
 ## Train the model
 
 #clf = RandomForestClassifier(criterion = 'entropy', n_estimators = 150) clf.fit(X, y)
-
 
 
 
