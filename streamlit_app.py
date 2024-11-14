@@ -15,7 +15,7 @@ model_url = "https://huggingface.co/jeffrey-joy/mental_health_Data/resolve/main/
 # Download the model from Hugging Face
 st.info("Loading model from Hugging Face...")
 output_path = "model.pkl"
-hf_hub_download(repo_id="jeffrey-joy/mental-health-Data", filename="model.pkl", local_dir=output_path)
+hf_hub_download(repo_id="jeffrey-joy/mental_health_Data", filename="model.pkl", local_dir=output_path)
 
 # Load the model using joblib
 clf = load(output_path)
