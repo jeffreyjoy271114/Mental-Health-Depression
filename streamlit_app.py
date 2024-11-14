@@ -43,7 +43,7 @@ with st.sidebar:
     Sleep_Duration = st.selectbox('Sleep Duration', df["Sleep Duration"].unique())
     Dietary_Habits = st.selectbox('Dietary Habits', df["Dietary Habits"].unique())
     Degree = st.selectbox('Degree', df["Degree"].unique())
-    Have_you_ever_had_suicidal_thoughts = st.selectbox('Have you ever had suicidal thoughts?', ('Yes', 'No'))
+    Have_you_ever_had_suicidal_thoughts = st.selectbox('Have you ever had suicidal thoughts ?', ('Yes', 'No'))
     Financial_Stress = st.selectbox('Financial Stress', (1.0, 2.0, 3.0, 4.0, 5.0))
 
 # Prepare input data
@@ -60,13 +60,13 @@ data = {
     'Sleep Duration': Sleep_Duration,
     'Dietary Habits': Dietary_Habits,
     'Degree': Degree,
-    'Have you ever had suicidal thoughts?': Have_you_ever_had_suicidal_thoughts,
+    'Have you ever had suicidal thoughts ?': Have_you_ever_had_suicidal_thoughts,
     'Financial Stress': Financial_Stress
 }
 input_df = pd.DataFrame([data])
 
 # Process input data
-encode_columns = ['Gender', 'City', 'Working Professional or Student', 'Sleep Duration', 'Dietary Habits', 'Degree', 'Have you ever had suicidal thoughts?']
+encode_columns = ['Gender', 'City', 'Working Professional or Student', 'Sleep Duration', 'Dietary Habits', 'Degree', 'Have you ever had suicidal thoughts ?']
 input_encoded = pd.get_dummies(input_df, columns=encode_columns)
 X_encoded = pd.get_dummies(X_raw, columns=encode_columns)
 input_encoded = input_encoded.reindex(columns=X_encoded.columns, fill_value=0)
