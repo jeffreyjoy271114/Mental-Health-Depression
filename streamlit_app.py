@@ -171,6 +171,7 @@ with st.expander('**Data Preparation**'):
 #clf = RandomForestClassifier(criterion = 'entropy', n_estimators = 150) clf.fit(X, y)
 
 import gdown
+from joblib import load
 url = "https://drive.google.com/file/d/1JbgPP424Z9_tB0Y50QBqxjebRMbq8dwR/view?usp=drive_link"
 output = "model.pkl"
 gdown.download(url, output, quiet=False)
