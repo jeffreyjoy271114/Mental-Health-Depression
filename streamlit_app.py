@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
-from joblib import load
-import gdown
+import requests
+import pickle
 
 # Title
 st.title("Mental Health and Depression Analysis")
@@ -54,20 +54,39 @@ input_row = pd.DataFrame([input_data])
 
 # Align input_row with training columns
 st.info("Aligning Features...")
-file_id = "1JbgPP424Z9_tB0Y50QBqxjebRMbq8dwR"
-gdown.download(f"https://drive.google.com/uc?id={file_id}", "columns.pkl", quiet=False)
-columns = load("columns.pkl")
+
+# Download the columns.pkl from Hugging Face
+columns_url = "https://huggingface.co/username/mental-health-model/resolve/main/columns.pkl"
+columns_response = requests.get(columns_url)
+if columns_response.status_code == 200:
+    with open("columns.pkl", "wb") as f:
+        f.write(columns_response.content)
+else:
+    st.error("Failed to download columns.pkl from Hugging Face.")
+
+# Load the columns
+with open("columns.pkl", "rb") as f:
+    columns = pickle.load(f)
+
 input_row = pd.get_dummies(input_row).reindex(columns=columns, fill_value=0)
 
-# Load model
+# Download and load the model from Hugging Face
 st.info("Loading Model...")
-model_file_id = "1JbgPP424Z9_tB0Y50QBqxjebRMbq8dwR"
-gdown.download(f"https://drive.google.com/uc?id={model_file_id}", "model.pkl", quiet=False)
-clf = load("model.pkl")
+model_url = "https://huggingface.co/username/mental-health-model/resolve/main/model.pkl"
+model_response = requests.get(model_url)
+if model_response.status_code == 200:
+    with open("model.pkl", "wb") as f:
+        f.write(model_response.content)
+else:
+    st.error("Failed to download model.pkl from Hugging Face.")
+
+with open("model.pkl", "rb") as f:
+    model = pickle.load(f)
 
 # Predict
-prediction = clf.predict(input_row)
-prediction_proba = clf.predict_proba(input_row)
+st.info("Making Predictions...")
+prediction = model.predict(input_row)
+prediction_proba = model.predict_proba(input_row)
 
 # Display results
 st.subheader("Prediction")
