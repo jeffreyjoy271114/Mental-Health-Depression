@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import LabelEncoder
 import requests
 from joblib import load
 
@@ -10,8 +11,7 @@ st.title("Mental Health and Depression Analysis")
 
 # Information about the dataset
 st.info("""
-This dataset was collected as part of a comprehensive survey aimed at understanding the factors contributing to depression risk among adults. 
-It provides insights into how everyday factors might correlate with mental health risks, making it a valuable resource for machine learning models.
+This dataset provides insights into how everyday factors might correlate with mental health risks, making it a valuable resource for machine learning models.
 """)
 
 # Load dataset
@@ -28,7 +28,7 @@ with st.expander('**Data**'):
     y_raw = df.Depression
     st.write(y_raw)
 
-# Input features
+# Sidebar for Input Features
 with st.sidebar:
     st.header('Input Features')
     Gender = st.selectbox('Gender', ('Male', 'Female'))
@@ -65,11 +65,32 @@ data = {
 }
 input_df = pd.DataFrame([data])
 
-# Process input data
-encode_columns = ['Gender', 'City', 'Working Professional or Student', 'Sleep Duration', 'Dietary Habits', 'Degree', 'Have you ever had suicidal thoughts ?']
-input_encoded = pd.get_dummies(input_df, columns=encode_columns)
-X_encoded = pd.get_dummies(X_raw, columns=encode_columns)
-input_encoded = input_encoded.reindex(columns=X_encoded.columns, fill_value=0)
+# Label Encoding
+st.info("Encoding Features Using LabelEncoder...")
+
+# Columns to encode
+encode_columns = ['Gender', 'City', 'Working Professional or Student', 'Sleep Duration', 'Dietary Habits', 'Degree', 'Have you ever had suicidal thoughts?']
+
+# Load the encoders (assuming these were saved during model training)
+encoders_url = "https://huggingface.co/jeffrey-joy/mental_health_Data/resolve/main/model.pkl"  # Replace with your actual URL
+response = requests.get(encoders_url)
+
+if response.status_code == 200:
+    with open("encoders.pkl", "wb") as f:
+        f.write(response.content)
+    encoders = load("encoders.pkl")
+    st.success("Encoders loaded successfully!")
+else:
+    st.error("Failed to load encoders. Please check the URL and try again.")
+
+# Apply encoders to input data
+for col in encode_columns:
+    encoder = encoders.get(col)
+    if encoder:
+        input_df[col] = encoder.transform(input_df[col])
+
+# Ensure input matches model's training format
+input_encoded = input_df.reindex(columns=X_raw.columns, fill_value=0)
 
 # Load model from Hugging Face
 st.info("Loading the model from Hugging Face...")
