@@ -161,7 +161,7 @@ input_mental = input_mental.reindex(columns=X.columns, fill_value=0)
 
 with st.expander('**Data Preparation**'):
   st.write('**Encoded X**')
-  input_row
+  input_mental
   st.write('**Encoded y**')
   y
 
