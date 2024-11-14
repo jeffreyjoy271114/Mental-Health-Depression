@@ -130,6 +130,9 @@ data = {'Gender' : Gender,
         'Family History of Mental Illness' : Family_History_of_Mental_Illness}
 input_df = pd.DataFrame(data, index = [0])
 input_mental = pd.concat([input_df, X_raw], axis = 0)
+# Drop rows with NaN values introduced during concatenation
+input_mental = input_mental.dropna()
+
 
 with st.expander('**Input Features**'):
   st.write('**Entered Mental Health Data**')
@@ -143,10 +146,14 @@ encode = ['Gender', 'City', 'Working Professional or Student',
           'Profession', 'Sleep Duration', 'Dietary Habits', 
           'Degree', 'Have you ever had suicidal thoughts ?',
           'Family History of Mental Illness']
-df_mental = pd.get_dummies(input_mental, prefix = encode)
+# df_mental = pd.get_dummies(input_mental, prefix = encode)
 
-X = df_mental[1:]
-input_row = df_mental[:1]
+X = pd.get_dummies(X_raw, columns=encode)
+input_row = pd.get_dummies(input_row, columns=encode)
+
+# Align the columns of input_row to match X
+input_row = input_row.reindex(columns=X.columns, fill_value=0)
+
 
 # # Encode y
 # target_mapper = {1 : 1,
@@ -161,8 +168,9 @@ with st.expander('**Data Preparation**'):
 # Model Training and inference
 ## Train the model
 
-clf = RandomForestClassifier(criterion = 'entropy', n_estimators = 150)
-clf.fit(X, y)
+#clf = RandomForestClassifier(criterion = 'entropy', n_estimators = 150) clf.fit(X, y)
+
+
 
 
 ## Apply model to make the predictions
