@@ -73,4 +73,35 @@ data = {
     'CGPA' : CGPA,
     'Study Satisfaction' : Study_Satisfaction,
     'Job Satisfaction' : Job_Satisfaction, 
-    
+    'Sleep Duration' : Sleep_Duration,
+    'Dietary Habits' : Dietary_Habits, 
+    'Degree' : Degree,
+    'Have you ever had suicidal thoughts ?' : Have_you_ever_had_suicidal_thoughts,
+    'Work/Study Hours' : Work_Study_Hours,
+    'Financial Stress' : Financial_Stress,
+    'Family History of Mental Illness' : Family_History_of_Mental_Illness
+}
+input_df = pd.DataFrame(data, index=[0])
+
+# Apply Label Encoding to the categorical columns
+input_df_encoded = input_df.copy()
+for column in categorical_columns:
+    encoder = LabelEncoder()
+    input_df_encoded[column] = encoder.fit_transform(input_df_encoded[column])
+
+# Make predictions using the loaded model
+prediction = clf.predict(input_df_encoded)
+prediction_proba = clf.predict_proba(input_df_encoded)
+
+# Display the predicted probabilities
+df_prediction_proba = pd.DataFrame(prediction_proba)
+df_prediction_proba.columns = ['No Depression', 'Depression']
+df_prediction_proba.rename(columns={0: 'No Depression', 1: 'Depression'}, inplace=True)
+
+# Display the predicted results
+st.subheader('Predicted Results')
+st.dataframe(df_prediction_proba)
+
+# Display the final prediction (whether the person is a victim of depression or not)
+mental_biforcate = np.array(['You are NOT a victim of Depression', 'You are a victim of Depression'])
+st.success(str(mental_biforcate[prediction][0]))
