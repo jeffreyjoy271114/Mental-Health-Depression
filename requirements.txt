@@ -8,4 +8,3 @@ gdown
 joblib
 requests
 huggingface_hub
-huggingface_hub requests
